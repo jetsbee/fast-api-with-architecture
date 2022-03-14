@@ -1,0 +1,3 @@
+flake8
+black
+fastapi[all]==0.71.0

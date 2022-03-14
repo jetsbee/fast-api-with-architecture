@@ -1,0 +1,12 @@
+{
+    "very_first_user": {
+        "username": "very_first_user",
+        "password": null,
+        "hashed_password": "!VERY_SECRET_PASSWORD!"
+    },
+    "very_first_user1": {
+        "username": "very_first_user1",
+        "password": null,
+        "hashed_password": "!VERY_SECRET_PASSWORD!"
+    }
+}
