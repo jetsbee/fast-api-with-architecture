@@ -9,7 +9,7 @@ class AuthOut(BaseModel):
     type: str = "Bearer"
 
     @classmethod
-    def fromModelType(
+    def from_model_type(
         cls, access_auth: AuthModel, refresh_auth: AuthModel, type="Bearer"
     ):
         return cls(

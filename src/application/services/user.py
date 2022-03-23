@@ -8,9 +8,9 @@ class CreationService:
         self.user_repository = user_repository
 
     def execute(self, user_in_dto: UserIn) -> UserOut:
-        user = user_in_dto.toModel()
+        user = user_in_dto.to_model()
         user.encrypt_password()
         self.user_repository.save(user)
-        user_out_dto = UserOut.fromModelType(user)
+        user_out_dto = UserOut.from_model_type(user)
 
         return user_out_dto

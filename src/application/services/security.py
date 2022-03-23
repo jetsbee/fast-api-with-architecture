@@ -9,9 +9,9 @@ class CreationService:
         pass
 
     def execute(self, user_out_dto: UserOut) -> AuthOut:
-        user = user_out_dto.toModel()
+        user = user_out_dto.to_model()
         access_auth = AuthModel.init(username=user.username, type=AuthType.ACCESS)
         refresh_auth = AuthModel.init(username=user.username, type=AuthType.REFRESH)
-        auth_out_dto = AuthOut.fromModelType(access_auth, refresh_auth)
+        auth_out_dto = AuthOut.from_model_type(access_auth, refresh_auth)
 
         return auth_out_dto

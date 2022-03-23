@@ -10,7 +10,7 @@ class UserBase(BaseModel):
 class UserIn(UserBase):
     password: str
 
-    def toModel(self):
+    def to_model(self):
         return UserModel(**self.dict())
 
 
@@ -18,8 +18,8 @@ class UserOut(UserBase):
     hashed_password: str
 
     @classmethod
-    def fromModelType(cls, user: UserModel):
+    def from_model_type(cls, user: UserModel):
         return cls(**user.dict())
 
-    def toModel(self):
+    def to_model(self):
         return UserModel(**self.dict())
