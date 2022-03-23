@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from ...domain.models.security import AuthModel, AuthType
+from ...domain.models.security import AuthModel
 
 
 class AuthOut(BaseModel):
