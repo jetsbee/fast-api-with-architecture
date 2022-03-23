@@ -3,9 +3,9 @@ from ..application.services.security import CreationService as AuthCreationServi
 from ..infrastructure.json_repository import JsonUserRepository
 
 
-def generateUserCreationService() -> UserCreationService:
+def generate_user_creation_service() -> UserCreationService:
     return UserCreationService(user_repository=JsonUserRepository())
 
 
-def generateAuthCreationService() -> AuthCreationService:
+def generate_auth_creation_service() -> AuthCreationService:
     return AuthCreationService()
