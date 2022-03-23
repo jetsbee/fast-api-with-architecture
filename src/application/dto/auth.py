@@ -12,4 +12,8 @@ class AuthOut(BaseModel):
     def fromModelType(
         cls, access_auth: AuthModel, refresh_auth: AuthModel, type="Bearer"
     ):
-        return cls(access_jwt=access_auth.jwt, refresh_jwt=refresh_auth.jwt, type=type)
+        return cls(
+            access_jwt=access_auth.jwt_string,
+            refresh_jwt=refresh_auth.jwt_string,
+            type=type,
+        )
