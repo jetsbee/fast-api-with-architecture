@@ -8,5 +8,10 @@
         "username": "very_first_user1",
         "password": null,
         "hashed_password": "!VERY_SECRET_PASSWORD!"
+    },
+    "test1": {
+        "username": "test1",
+        "password": null,
+        "hashed_password": "$2b$12$R0gabG.skupBHlqIVIKT6u2fRu2bm8XpoyyVm.sbrSRwROAnGEMca"
     }
 }

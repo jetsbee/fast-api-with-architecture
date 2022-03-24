@@ -27,5 +27,7 @@ class JsonUserRepository(UserRepository, JsonRepository):
         super().__init__(db_loc=db_loc)
 
     def save(self, user: UserModel) -> None:
+        super().save(user=user)  # Confirm parent's signiture
+
         self._db[user.username] = user.dict()
         self._write_database(db=self._db)
