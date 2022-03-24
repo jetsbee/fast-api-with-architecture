@@ -1,7 +1,7 @@
 from typing import ClassVar, Literal
 from enum import Enum
 
-from pydantic import BaseModel, PrivateAttr
+from pydantic import BaseModel
 
 from .jwt import JWTModel
 from ...dependencies.jwt_factory import inject_jwt_impl_instance
