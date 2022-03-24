@@ -10,7 +10,7 @@ class JWTType(str, Enum):
 class JWTModel(ABC):
     @classmethod
     @abstractmethod
-    def create(cls, username, jwt_type) -> str:
+    def create(cls, username: str, jwt_type: JWTType) -> str:
         pass
 
     @classmethod

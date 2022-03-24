@@ -4,7 +4,7 @@ from ...domain.repositories.user import UserRepository
 
 
 class CreationService:
-    def __init__(self, user_repository: UserRepository):
+    def __init__(self, user_repository: UserRepository) -> None:
         self.user_repository = user_repository
 
     def execute(self, user_in_dto: UserIn) -> UserOut:

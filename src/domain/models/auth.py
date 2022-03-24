@@ -12,7 +12,7 @@ class AuthModel(BaseModel):
     __jwt_model: ClassVar[JWTModel] = inject_jwt_impl_instance()
 
     @classmethod
-    def init(cls, username, jwt_type):
+    def init(cls, username, jwt_type) -> BaseModel:
         token = cls.__jwt_model.create(username=username, jwt_type=jwt_type)
 
         return cls(jwt_string=token, jwt_type=jwt_type)

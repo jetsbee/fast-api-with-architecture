@@ -33,7 +33,7 @@ class JWTImpl(JWTModel):
     __authorization: AuthJWT = AuthJWT()
 
     @classmethod
-    def __create_token(cls, username: str, jwt_type: JWTType):
+    def __create_token(cls, username: str, jwt_type: JWTType) -> str:
         token = None
         if jwt_type == JWTType.ACCESS:
             token = cls.__authorization.create_access_token(subject=username)

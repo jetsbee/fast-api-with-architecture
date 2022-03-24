@@ -13,19 +13,19 @@ class UserModel(BaseModel):
     )
 
     @classmethod
-    def verify_password(cls, plain_password, hashed_password):
+    def verify_password(cls, plain_password: str, hashed_password: str) -> bool:
         return cls.__pwd_context.verify(plain_password, hashed_password)
 
     @classmethod
-    def __get_password_hash(cls, password):
+    def __get_password_hash(cls, password: str) -> str:
         return cls.__pwd_context.hash(password)
 
-    def encrypt_password(self):
+    def encrypt_password(self) -> None:
         if self.password is None:
             raise Exception("Password not found.")
 
         self.hashed_password = self.__get_password_hash(self.password)
         self.__dispose_raw_password()
 
-    def __dispose_raw_password(self):
+    def __dispose_raw_password(self) -> None:
         self.password = None

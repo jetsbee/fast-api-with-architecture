@@ -5,9 +5,6 @@ from ...domain.models.auth import AuthModel, JWTType
 
 
 class CreationService:
-    def __init__(self):
-        pass
-
     def execute(self, user_out_dto: UserOut) -> AuthOut:
         user = user_out_dto.to_model()
         access_auth = AuthModel.init(username=user.username, jwt_type=JWTType.ACCESS)
