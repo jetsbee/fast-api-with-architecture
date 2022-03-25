@@ -29,5 +29,13 @@ class JsonUserRepository(UserRepository, JsonRepository):
     def save(self, user: UserModel) -> None:
         super().save(user=user)  # Confirm parent's signiture
 
-        self._db[user.username] = user.dict()
+        self._db[user.username] = user.dict(exclude={"password"})
         self._write_database(db=self._db)
+
+    def exists_by_username(self, username: str) -> bool:
+        super().exists_by_username(username=username)
+
+        existed_user = self._db.get(username)
+        rst = True if existed_user is not None else False
+
+        return rst

@@ -1,17 +1,14 @@
 {
     "very_first_user": {
         "username": "very_first_user",
-        "password": null,
         "hashed_password": "!VERY_SECRET_PASSWORD!"
     },
     "very_first_user1": {
         "username": "very_first_user1",
-        "password": null,
         "hashed_password": "!VERY_SECRET_PASSWORD!"
     },
     "test1": {
         "username": "test1",
-        "password": null,
-        "hashed_password": "$2b$12$/7R1anC7BBhE10Hkgm31CeU29P8d84wfO0WuxZ9s0U/ekAuZfT7Ya"
+        "hashed_password": "$2b$12$G7hFwYNG3I6Q.9Di32NjEOhpsJLSmymEKaNcu1xf4LW.im9PnWbZm"
     }
 }

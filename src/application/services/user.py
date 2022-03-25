@@ -10,6 +10,9 @@ class CreationService:
     def execute(self, user_in_dto: UserIn) -> UserOut:
         user = user_in_dto.to_model()
         user.encrypt_password()
+        if self.user_repository.exists_by_username(user.username):
+            # Todo: Implement
+            pass
         self.user_repository.save(user)
         user_out_dto = UserOut.from_model_type(user)
 
