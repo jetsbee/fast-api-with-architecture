@@ -3,3 +3,4 @@ black
 fastapi[all]==0.71.0
 passlib[bcrypt]
 fastapi-jwt-auth
+aiohttp
