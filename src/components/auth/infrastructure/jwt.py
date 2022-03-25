@@ -1,27 +1,16 @@
-from pydantic import BaseSettings
 from pydantic import BaseModel
 from fastapi_jwt_auth import AuthJWT
 
+from ....config import get_settings
 from ..domain.models.jwt import JWTModel, JWTType
 
 
-class Settings(BaseSettings):
-    SECRET_KEY: str = "c175fcc672c7a6eb4fb53dcbd95b4e8d043018d54926e97badcfb4bd2642cbac"
-    ALGORITHM: str = "HS256"
-    ACCESS_TOKEN_EXPIRES: int = 30 * 60  # minutes
-    REFRESH_TOKEN_EXPIRES: int = 15 * 86400  # days
-    AUTH_HEADER_TYPE: str = "bearer"
-
-
-settings = Settings()
-
-
 class JwtSettings(BaseModel):
-    authjwt_secret_key: str = settings.SECRET_KEY
-    authjwt_algorithm: str = settings.ALGORITHM
-    authjwt_access_token_expires: int = settings.ACCESS_TOKEN_EXPIRES
-    authjwt_refresh_token_expires: int = settings.REFRESH_TOKEN_EXPIRES
-    authjwt_header_type: str = settings.AUTH_HEADER_TYPE
+    authjwt_secret_key: str = get_settings().SECRET_KEY
+    authjwt_algorithm: str = get_settings().ALGORITHM
+    authjwt_access_token_expires: int = get_settings().ACCESS_TOKEN_EXPIRES
+    authjwt_refresh_token_expires: int = get_settings().REFRESH_TOKEN_EXPIRES
+    authjwt_header_type: str = get_settings().AUTH_HEADER_TYPE
 
 
 @AuthJWT.load_config
