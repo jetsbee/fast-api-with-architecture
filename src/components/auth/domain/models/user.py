@@ -12,9 +12,8 @@ class UserModel(BaseModel):
         schemes=["bcrypt"], deprecated="auto"
     )
 
-    @classmethod
-    def verify_password(cls, plain_password: str, hashed_password: str) -> bool:
-        return cls.__pwd_context.verify(plain_password, hashed_password)
+    def verify_password(self, plain_password: str) -> bool:
+        return UserModel.__pwd_context.verify(plain_password, self.hashed_password)
 
     @classmethod
     def __get_password_hash(cls, password: str) -> str:
