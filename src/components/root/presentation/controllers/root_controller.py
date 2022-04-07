@@ -1,4 +1,4 @@
-from typing import Union, Dict, Coroutine
+from typing import Optional, Dict, Coroutine
 
 import aiohttp
 
@@ -7,7 +7,7 @@ from fastapi import APIRouter
 router = APIRouter()
 
 
-async def get_root_through_network() -> Union[Dict, Coroutine, None]:
+async def get_root_through_network() -> Coroutine[None, None, Optional[Dict]]:
     rst = None
     async with aiohttp.ClientSession() as session:
         async with session.get("http://localhost:8000/") as resp:
