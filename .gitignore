@@ -337,5 +337,6 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,pycharm+all,windows,linux,macos
 
-**/envs/*.*
-!**/envs/.gitkeep
+!*/env/
+*/env/**/*.*
+!*/env/.gitkeep

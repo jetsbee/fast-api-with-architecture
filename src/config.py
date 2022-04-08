@@ -14,7 +14,7 @@ class GlobalSettings(BaseSettings):
     # End of JWT
 
     class Config:
-        env_file = str(Path(__file__).resolve().parent / "envs" / ".env")
+        env_file = str(Path(__file__).resolve().parent / "env" / ".env")
 
 
 class RequiredSettings(BaseSettings):
@@ -25,12 +25,12 @@ class RequiredSettings(BaseSettings):
 
 class DevSettings(GlobalSettings, RequiredSettings):
     class Config:
-        env_file = str(Path(__file__).resolve().parent / "envs" / "dev.env")
+        env_file = str(Path(__file__).resolve().parent / "env" / "dev.env")
 
 
 class ProdSettings(GlobalSettings, RequiredSettings):
     class Config:
-        env_file = str(Path(__file__).resolve().parent / "envs" / "prod.env")
+        env_file = str(Path(__file__).resolve().parent / "env" / "prod.env")
 
 
 class FactorySettings:
