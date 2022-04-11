@@ -1,7 +1,7 @@
 from ..dto.user import UserIn
 from ..dto.user import UserOut
 from ...domain.repositories.user import UserRepository
-from ...errors.exceptions import UserAlreadyExistenceException
+from ...errors import UserAlreadyExistenceException
 
 
 class CreationService:
@@ -12,7 +12,7 @@ class CreationService:
         user = user_in_dto.to_model()
         user.encrypt_password()
         if self.user_repository.exists_by_username(user.username):
-            raise UserAlreadyExistenceException(name=user.username)
+            raise UserAlreadyExistenceException(username=user.username)
         self.user_repository.save(user)
         user_out_dto = UserOut.from_model_type(user)
 
