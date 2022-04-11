@@ -18,9 +18,7 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
     return await request_validation_exception_handler(request, exc)
 
 
-async def api_exception_exception_handler(
-    request: Request, exc: APIException
-) -> JSONResponse:
+async def api_exception_exception_handler(request: Request, exc: APIException):
     # print("#PoorSimpleLoggerForOnlySamplePurpose:", exc)
     return JSONResponse(
         status_code=exc.status_code,
