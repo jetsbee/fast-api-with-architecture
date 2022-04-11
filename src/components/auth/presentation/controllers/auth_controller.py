@@ -10,7 +10,7 @@ router = APIRouter()
 
 
 @router.post("/auth/signup/", status_code=status.HTTP_201_CREATED)
-async def signup(
+def signup(
     user_in_dto: UserIn,
     user_creation_service=Depends(generate_user_creation_service),
     auth_creation_service=Depends(generate_auth_creation_service),
