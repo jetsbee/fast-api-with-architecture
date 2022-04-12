@@ -1,3 +1,5 @@
+import logging
+
 from pathlib import Path
 from functools import lru_cache
 
@@ -21,14 +23,19 @@ class RequiredSettings(BaseSettings):
     # JWT
     SECRET_KEY: str
     # End of JWT
+    LOG_LEVEL: int
 
 
 class DevSettings(GlobalSettings, RequiredSettings):
+    LOG_LEVEL: int = logging.INFO
+
     class Config:
         env_file = str(Path(__file__).resolve().parent / "env" / "dev.env")
 
 
 class ProdSettings(GlobalSettings, RequiredSettings):
+    LOG_LEVEL: int = logging.ERROR
+
     class Config:
         env_file = str(Path(__file__).resolve().parent / "env" / "prod.env")
 

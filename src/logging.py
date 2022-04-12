@@ -6,6 +6,8 @@ from fastapi import Request
 from fastapi.logger import logger
 from starlette.responses import Response
 
+from .config import get_settings
+
 """
 # Logging issue under uvicorn
 
@@ -15,7 +17,7 @@ logger.debug(), logger.info() is not working, even if do logger.setLevel()
 - Ref 2. https://github.com/encode/uvicorn/issues/945#issuecomment-819692145
 """
 # Todo: specify level with config or env
-logging.basicConfig(level=logging.INFO)  # Set all of loggers level
+logging.basicConfig(level=get_settings().LOG_LEVEL)  # Set all of loggers level
 
 ErrorHanderCallable = Callable[[Request, Exception], Awaitable[Response]]
 
