@@ -6,14 +6,12 @@ from fastapi import Request
 from fastapi.logger import logger
 from starlette.responses import Response
 
+from .config import get_settings
 from .error.exceptions import (
     StarletteHTTPException,
     RequestValidationError,
     APIException,
 )
-
-
-from .config import get_settings
 
 logger.setLevel(get_settings().LOG_LEVEL)
 logger.addHandler(logging.StreamHandler())
