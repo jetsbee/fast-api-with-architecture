@@ -19,7 +19,7 @@ logger.addHandler(logging.StreamHandler())
 ErrorHanderCallable = Callable[[Request, Exception], Awaitable[Response]]
 
 
-def add_exc_logger(original_function: ErrorHanderCallable) -> ErrorHanderCallable:
+def enable_exc_logging(original_function: ErrorHanderCallable) -> ErrorHanderCallable:
     @wraps(original_function)
     async def wrapper(request: Request, exc: Exception) -> Awaitable[Response]:
         if isinstance(exc, APIException):

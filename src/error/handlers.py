@@ -6,20 +6,20 @@ from fastapi.exception_handlers import (
 from fastapi.responses import JSONResponse
 
 from .exceptions import StarletteHTTPException, RequestValidationError, APIException
-from ..logging import add_exc_logger
+from ..logging import enable_exc_logging
 
 
-@add_exc_logger
+@enable_exc_logging
 async def custom_http_exception_handler(request: Request, exc: StarletteHTTPException):
     return await http_exception_handler(request, exc)
 
 
-@add_exc_logger
+@enable_exc_logging
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
     return await request_validation_exception_handler(request, exc)
 
 
-@add_exc_logger
+@enable_exc_logging
 async def api_exception_exception_handler(request: Request, exc: APIException):
     return JSONResponse(
         status_code=exc.status_code,
