@@ -9,9 +9,9 @@ from .routing import router, activation as routes_activation
 
 def create_app() -> FastAPI:
     # Easy auth in swagger ui
-    API_KEY_HEADER = APIKeyHeader(name="Authorization", auto_error=False)
+    authorization_header_scheme = APIKeyHeader(name="Authorization", auto_error=False)
 
-    app = FastAPI(dependencies=[Depends(API_KEY_HEADER)])
+    app = FastAPI(dependencies=[Depends(authorization_header_scheme)])
 
     add_custom_exception_handlers(app)
 
