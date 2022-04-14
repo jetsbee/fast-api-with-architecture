@@ -57,7 +57,11 @@ def enable_exc_logging(original_function: ErrorHanderCallable) -> ErrorHanderCal
             else request.client.host
         )
         logging_info.ip = ip.split(",")[0] if "," in ip else ip
-        logging_info.url = f"{request.url.hostname}{request.url.path}"
+        logging_info.url = (
+            f"{request.url.scheme}://{request.url.hostname}:{request.url.port}"
+            f"{request.url.path}"
+        )
+        logging_info.url += f"?{request.url.query}" if request.url.query else ""
         logging_info.method = request.method
         logging_info.headers = request.headers
         logging_info.cookies = request.cookies
