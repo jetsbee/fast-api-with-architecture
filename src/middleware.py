@@ -1,3 +1,4 @@
+import time
 from functools import wraps
 from typing import Callable, Awaitable
 
@@ -16,9 +17,7 @@ def add_logging_info(original_function: MiddlewareCallable) -> MiddlewareCallabl
     async def wrapper(
         request: Request, call_next: RequestResponseEndpoint
     ) -> Awaitable[Response]:
-        # Todo: Save states for logging
-        # import time
-        # request.state.start_time = time.time()
+        request.state.start_time = time.time()
         response = await original_function(request, call_next)
         return response
 

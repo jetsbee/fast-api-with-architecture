@@ -2,9 +2,7 @@ from typing import Awaitable, Optional, Dict
 
 import aiohttp
 
-from fastapi import APIRouter
-
-router = APIRouter()
+from .....routing import router
 
 
 async def get_root_through_network() -> Awaitable[Optional[Dict]]:

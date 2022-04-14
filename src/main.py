@@ -2,13 +2,8 @@ from fastapi import FastAPI
 from starlette.middleware.base import BaseHTTPMiddleware
 
 from . import middleware as custom_middleware
-from .components.root.presentation.controllers.root_controller import (
-    router as root_router,
-)
-from .components.auth.presentation.controllers.auth_controller import (
-    router as auth_router,
-)
 from .error import add_custom_exception_handlers
+from .routing import router, activation as routes_activation
 
 
 def create_app() -> FastAPI:
@@ -22,8 +17,8 @@ def create_app() -> FastAPI:
         dispatch=custom_middleware.handle_unexpected_exc,
     )
 
-    app.include_router(root_router)
-    app.include_router(auth_router)
+    routes_activation.connect_components()
+    app.include_router(router)
 
     return app
 

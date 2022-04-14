@@ -1,12 +1,11 @@
-from fastapi import APIRouter, Depends, status
+from fastapi import Depends, status
 
 from ...application.dto.user import UserIn
 from ...dependencies.services_factory import (
     generate_user_creation_service,
     generate_auth_creation_service,
 )
-
-router = APIRouter()
+from .....routing import router
 
 
 @router.post("/auth/signup/", status_code=status.HTTP_201_CREATED)
