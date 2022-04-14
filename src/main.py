@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
+from fastapi.security import APIKeyHeader
 from starlette.middleware.base import BaseHTTPMiddleware
 
 from . import middleware as custom_middleware
@@ -7,7 +8,10 @@ from .routing import router, activation as routes_activation
 
 
 def create_app() -> FastAPI:
-    app = FastAPI()
+    # Easy auth in swagger ui
+    API_KEY_HEADER = APIKeyHeader(name="Authorization", auto_error=False)
+
+    app = FastAPI(dependencies=[Depends(API_KEY_HEADER)])
 
     add_custom_exception_handlers(app)
 
