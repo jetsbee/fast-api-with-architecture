@@ -5,7 +5,7 @@ from ..models.user import UserModel
 
 class UserRepository(ABC):
     @abstractmethod
-    def save(self, user: UserModel) -> None:
+    async def save(self, user: UserModel) -> None:
         pass
 
     @abstractmethod

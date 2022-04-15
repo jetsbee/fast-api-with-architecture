@@ -8,12 +8,12 @@ class CreationService:
     def __init__(self, user_repository: UserRepository) -> None:
         self.user_repository = user_repository
 
-    def execute(self, user_in_dto: UserIn) -> UserOut:
+    async def execute(self, user_in_dto: UserIn) -> UserOut:
         user = user_in_dto.to_model()
         user.encrypt_password()
         if self.user_repository.exists_by_username(user.username):
             raise UserAlreadyExistenceException(username=user.username)
-        self.user_repository.save(user)
+        await self.user_repository.save(user)
         user_out_dto = UserOut.from_model_type(user)
 
         return user_out_dto
