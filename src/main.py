@@ -1,6 +1,5 @@
 from fastapi import FastAPI, Depends
 from fastapi.security import APIKeyHeader
-from starlette.middleware.base import BaseHTTPMiddleware
 
 from . import middleware as custom_middleware
 from .error import add_custom_exception_handlers
@@ -16,10 +15,7 @@ def create_app() -> FastAPI:
     add_custom_exception_handlers(app)
 
     # Order of adding middleware matters. (the last one is invoked first and returns the last)
-    app.add_middleware(
-        middleware_class=BaseHTTPMiddleware,
-        dispatch=custom_middleware.handle_unexpected_exc,
-    )
+    app.add_middleware(middleware_class=custom_middleware.UnexpectedErrorMiddleware)
 
     routes_activation.connect_components()
     app.include_router(router)

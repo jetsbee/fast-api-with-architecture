@@ -14,7 +14,7 @@ async def signup(
     user_creation_service=Depends(generate_user_creation_service),
     auth_creation_service=Depends(generate_auth_creation_service),
 ):
-    user_out_dto = await user_creation_service.execute(user_in_dto)
+    user_out_dto = user_creation_service.execute(user_in_dto)
     auth_out_dto = auth_creation_service.execute(user_out_dto)
 
     return auth_out_dto
